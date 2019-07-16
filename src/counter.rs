@@ -15,8 +15,6 @@ pub struct LineCounter {
 
 impl LineCounter {
     pub fn new(ops: Options) -> LineCounter {
-        println!("{:?}", ops.file_extensions);
-
         LineCounter {
             current_path: ops.dir.clone(),
             ops,
@@ -28,7 +26,6 @@ impl LineCounter {
         // If there was an error, if it was a permission erorr then just tell
         // the user and contine.
         let curr_path = self.current_path.as_path();
-        println!("Current path: {}", curr_path.display());
         let metadata = fs::symlink_metadata(curr_path)?;
         let f_type = metadata.file_type();
 
